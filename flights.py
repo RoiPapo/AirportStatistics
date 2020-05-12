@@ -36,10 +36,9 @@ class Flights:
         """
         dict_copy = data.copy()
         empty_seats_list = []
-        for i in range(dict_copy.get()[0]):
+        for i in range(len(dict_copy[0])):
             difference = dict_copy.get("Seats")[i] - dict_copy.get("Passengers")[i]
-            if difference > 0:
-                empty_seats_list.append(difference)
+            empty_seats_list.append(difference)
         dict_copy["Empty_seats"] = empty_seats_list
         return dict_copy
 
@@ -51,6 +50,11 @@ class Flights:
         """
         dict_copy = data.copy()
         empty_seats_mean = mean(dict_copy.get("Empty_seats"))
-        for i in range():
-            pass
+        counter = 0
+        for i in range(len(dict_copy[0])):
+            if (empty_seats_mean - dict_copy.get("Empty_seats")[i]) >= 3000:
+                counter += 1
+        if counter > 3120:
+            return "Yes"
+        return "No"
 
