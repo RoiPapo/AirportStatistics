@@ -8,7 +8,7 @@ def median(list_of_values):
     else:
         # Now we need only 1 index for exact value
         result = sorted_list[center_index]
-    return "%.2f" % result
+    return result
 
 
 def mean(list_of_values):
