@@ -1,3 +1,8 @@
+from statistics import mean
+
+import data
+
+
 class Flights:
 
     def __init__(self, data):
