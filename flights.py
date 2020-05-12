@@ -1,4 +1,5 @@
 class Flights:
+
     def __init__(self, data):
         self.data = data
 
@@ -17,7 +18,15 @@ class Flights:
         :param statistic_functions: a LIST of statistic functions from statistics.py
         :return: print statistic measures on features using the statistic functions from statistics.py
         """
-        pass
+        print("Question 1:")
+        for key, value in self.data.items():
+            if key in features:
+                print(f"{key.title()}: ", end='')
+                for index, func in enumerate(statistic_functions):
+                    if index == len(statistic_functions) - 1:
+                        print(f"{func(value)}")
+                    else:
+                        print(f"{func(value)}, ", end='')
 
     def compute_empty_seats(self):
         """
