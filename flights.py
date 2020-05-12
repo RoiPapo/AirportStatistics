@@ -9,7 +9,17 @@ class Flights:
         :return: data (DICT) which contain only records in which the airport's name (according to airports STRING)
         starts with the letters from letters SET.
         """
-        pass
+        dict_copy = data.copy()
+        values_list = dict_copy.get(airports)
+        index_list = []
+        for i in range(len(values_list)):
+            if values_list[i][0] not in letters:
+                index_list.append(i)
+        index_list = index_list.reverse()
+        for index in index_list:
+            for feature in dict_copy.keys():
+                del dict_copy[feature][index]
+        return dict_copy
 
     def print_details(self, features, statistic_functions):
         """
