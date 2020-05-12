@@ -5,7 +5,7 @@ from statistics import *
 
 
 def main():
-    print("hi")
+    print("hi hhhaaa")
     # path = argv[1]
     # features = argv[2]
     default_path = 'hw2_sample_input.csv'  # REMEMBER T0 CHANGE BEFORE HANDING
