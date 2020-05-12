@@ -15,7 +15,7 @@ class Flights:
         for i in range(len(values_list)):
             if values_list[i][0] not in letters:
                 index_list.append(i)
-        index_list = index_list.reverse()
+        index_list.reverse()
         for index in index_list:
             for feature in dict_copy.keys():
                 del dict_copy[feature][index]
@@ -34,7 +34,14 @@ class Flights:
         :return: add a key (names Empty_seats) to data DICT. Its value is a LIST of number of empty seats
         in every record.
         """
-        pass
+        dict_copy = data.copy()
+        empty_seats_list = []
+        for i in range(dict_copy.get()[0]):
+            difference = dict_copy.get("Seats")[i] - dict_copy.get("Passengers")[i]
+            if difference > 0:
+                empty_seats_list.append(difference)
+        dict_copy["Empty_seats"] = empty_seats_list
+        return dict_copy
 
     def count_bad_flights(self, num):
         """
@@ -42,4 +49,8 @@ class Flights:
         :return: the number of records that satisfy:
         abs((mean of empty seats in the couple's flights)-(number of empty seats in record no. i)) >= num
         """
-        pass
+        dict_copy = data.copy()
+        empty_seats_mean = mean(dict_copy.get("Empty_seats"))
+        for i in range():
+            pass
+
