@@ -46,13 +46,11 @@ class Flights:
         :return: add a key (names Empty_seats) to data DICT. Its value is a LIST of number of empty seats
         in every record.
         """
-        dict_copy = data.copy()
         empty_seats_list = []
-        for i in range(len(dict_copy[0])):
-            difference = dict_copy.get("Seats")[i] - dict_copy.get("Passengers")[i]
+        for i in range(len(self.data.get([0]))):
+            difference = self.data.get("Seats")[i] - self.data.get("Passengers")[i]
             empty_seats_list.append(difference)
-        dict_copy["Empty_seats"] = empty_seats_list
-        return dict_copy
+        self.data["Empty_seats"] = empty_seats_list
 
     def count_bad_flights(self, num):
 
@@ -61,12 +59,13 @@ class Flights:
         :return: the number of records that satisfy:
         abs((mean of empty seats in the couple's flights)-(number of empty seats in record no. i)) >= num
         """
-        dict_copy = data.copy()
-        empty_seats_mean = mean(dict_copy.get("Empty_seats"))
+        empty_seats_mean = mean(self.data.get("Empty_seats"))
         counter = 0
-        for i in range(len(dict_copy[0])):
-            if (empty_seats_mean - dict_copy.get("Empty_seats")[i]) >= num:
+        for i in range(len(self.data.get([0]))):
+            if abs(empty_seats_mean - self.data.get("Empty_seats")[i]) >= num:
                 counter += 1
+        print(f"Number of unwanted flights: {counter}")
+        print(f"Will Mr & Mrs Smith be separated? ", end='')
         if counter > 3120:
             return "Yes"
         return "No"
