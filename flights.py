@@ -15,17 +15,15 @@ class Flights:
         :return: data (DICT) which contain only records in which the airport's name (according to airports STRING)
         starts with the letters from letters SET.
         """
-        dict_copy = data.copy()
-        values_list = dict_copy.get(airports)
+
         index_list = []
-        for i in range(len(values_list)):
-            if values_list[i][0] not in letters:
+        for i in range(len(self.data.get(airports))):
+            if self.data.get(airports)[i][0] not in letters:
                 index_list.append(i)
         index_list.reverse()
         for index in index_list:
-            for feature in dict_copy.keys():
-                del dict_copy[feature][index]
-        return dict_copy
+            for feature in self.data.keys():
+                del self.data[feature][index]
 
     def print_details(self, features, statistic_functions):
         """
@@ -33,8 +31,7 @@ class Flights:
         :param statistic_functions: a LIST of statistic functions from statistics.py
         :return: print statistic measures on features using the statistic functions from statistics.py
         """
-        print("Question 1:")
-        for key, value in self.data.items():
+        for key, value in sorted(self.data.items()):
             if key in features:
                 print(f"{key.title()}: ", end='')
                 for index, func in enumerate(statistic_functions):
@@ -44,6 +41,7 @@ class Flights:
                         print(f"{func(value)}, ", end='')
 
     def compute_empty_seats(self):
+
         """
         :return: add a key (names Empty_seats) to data DICT. Its value is a LIST of number of empty seats
         in every record.
@@ -57,6 +55,7 @@ class Flights:
         return dict_copy
 
     def count_bad_flights(self, num):
+
         """
         :param num: an INTEGER
         :return: the number of records that satisfy:
@@ -66,9 +65,8 @@ class Flights:
         empty_seats_mean = mean(dict_copy.get("Empty_seats"))
         counter = 0
         for i in range(len(dict_copy[0])):
-            if (empty_seats_mean - dict_copy.get("Empty_seats")[i]) >= 3000:
+            if (empty_seats_mean - dict_copy.get("Empty_seats")[i]) >= num:
                 counter += 1
         if counter > 3120:
             return "Yes"
         return "No"
-
