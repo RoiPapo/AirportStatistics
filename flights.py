@@ -47,7 +47,7 @@ class Flights:
         in every record.
         """
         empty_seats_list = []
-        for i in range(len(self.data.get([0]))):
+        for i in range(len(self.data.get("Passengers"))):
             difference = self.data.get("Seats")[i] - self.data.get("Passengers")[i]
             empty_seats_list.append(difference)
         self.data["Empty_seats"] = empty_seats_list
@@ -61,11 +61,12 @@ class Flights:
         """
         empty_seats_mean = mean(self.data.get("Empty_seats"))
         counter = 0
-        for i in range(len(self.data.get([0]))):
+        for i in range(len(self.data.get("Passengers"))):
             if abs(empty_seats_mean - self.data.get("Empty_seats")[i]) >= num:
                 counter += 1
         print(f"Number of unwanted flights: {counter}")
         print(f"Will Mr & Mrs Smith be separated? ", end='')
         if counter > 3120:
-            return "Yes"
-        return "No"
+            print("Yes")
+        else:
+            print("No")

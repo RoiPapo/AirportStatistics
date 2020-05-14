@@ -7,7 +7,7 @@ from statistics import *
 def main():
     # path = argv[1]
     # features = argv[2]
-    default_path = 'hw2_sample_input.csv'  # REMEMBER T0 CHANGE BEFORE HANDING
+    default_path = 'Airports.csv'  # REMEMBER T0 CHANGE BEFORE HANDING
     default_features = ['Origin_airport', 'Destination_airport', 'Flights', 'Distance', 'Seats', 'Passengers']
     q1_features = ['Distance', 'Flights', 'Passengers', 'Seats']
     q1_leters = (['D', 'A', 'T', 'S', 'C', 'I', 'E', 'N'])
@@ -19,7 +19,8 @@ def main():
     print("Question 1:")
     flights.print_details(q1_features, statistic_functions)
     print("\nQuestion 2:")
-
+    flights.compute_empty_seats()
+    flights.count_bad_flights(3000)
 
 if __name__ == "__main__":
     main()
